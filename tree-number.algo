@@ -1,0 +1,41 @@
+ALGORITHM sentence_analysis
+VAR
+    sentence: STRING:=" ";
+    sentence_length: INTEGER;
+     word_count: INTEGER;
+     vowel_count: INTEGER;
+    character: CHARACTER;
+BEGIN
+    sentence := ""; 
+
+   
+    Read(sentence);
+
+    sentence_length := 0;
+    word_count := 0;
+    vowel_count := 0;
+    character:=' ';
+
+    FOR i FROM 1 TO LENGTH(sentence) DO
+        character := SUBSTRING(sentence, i, 1);
+        sentence_length := sentence_length + 1;
+
+        IF character IS ALPHABETIC THEN
+            IF character IS VOWEL THEN
+                vowel_count := vowel_count + 1;
+            END IF;
+        END IF;
+
+        IF character IS SPACE THEN
+            word_count := word_count + 1;
+        END IF;
+    END FOR;
+
+    -- Add 1 to word_count for the last word
+    word_count := word_count + 1;
+
+    -- Display the results
+    Write("Length of the sentence:", sentence_length);
+    Write("Number of words in the sentence:", word_count);
+    Write("Number of vowels in the sentence:", vowel_count);
+END
